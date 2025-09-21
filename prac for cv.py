@@ -1,0 +1,17 @@
+import cv2 as cv
+import numpy as np
+image=cv.imread('C:/Users/rm489/OneDrive/Pictures/Screenshots/Screenshot 2023-05-08 191328.png')
+blurred=cv.GaussianBlur(image,(21,21),0)
+filyter=cv.filter2D(image,-1,np.array([[0,-1,0],[-1,4.8,-1],[0,-1,0]]))
+edges=cv.Canny(image,50,70)
+x=cv.cvtColor(filyter,cv.COLOR_BGR2GRAY)
+cv.imshow("binary",x)
+y,_=cv.findContours(x,cv.RETR_LIST,cv.CHAIN_APPROX_SIMPLE)
+z=cv.drawContours(image,y,-1,(0,230,255),1)
+cv.imshow("contours",z)
+cv.imshow("edges",edges)
+cv.imshow("filtered",filyter)
+cv.imshow('blurred',blurred)
+cv.imshow("original",image)
+cv.waitKey(0)
+cv.destroyAllWindows()
