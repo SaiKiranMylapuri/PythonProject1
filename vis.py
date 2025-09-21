@@ -17,5 +17,6 @@ sns.set_style('darkgrid')
 sns.kdeplot(x='emotions',data=a,)
 sns.despine()
 plt.show()
+print("hello")
 
 
